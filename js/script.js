@@ -21,7 +21,7 @@ let timesClicked = sessionStorage.timesClicked ? Number(sessionStorage.timesClic
  * This function adds to the click counter on the cookie.
  */
 function clickCookie() {
-  timesClicked++;
+  timesClicked++
   sessionStorage.timesClicked = timesClicked
   // Display result
   document.getElementById('result').innerHTML = "Cookie Count: " + timesClicked
