@@ -15,13 +15,21 @@ if (navigator.serviceWorker) {
   })
 }
 
-let timesClicked = 0
+let timesClicked = sessionStorage.timesClicked ? Number(sessionStorage.timesClicked) : 0
+
 /**
  * This function adds to the click counter on the cookie.
  */
-// eslint-disable-next-line no-unused-vars
 function clickCookie() {
-  timesClicked++
-  document.getElementById('result').innerHTML =
-    timesClicked
+  timesClicked++;
+  sessionStorage.timesClicked = timesClicked
+  // Display result
+  document.getElementById('result').innerHTML = "Cookie Count: " + timesClicked
+}
+
+// Update the sessionStorage
+if (sessionStorage.timesClicked) {
+  sessionStorage.timesClicked = Number(sessionStorage.timesClicked) + 1
+} else {
+  sessionStorage.timesClicked = 0
 }
