@@ -15,21 +15,27 @@ if (navigator.serviceWorker) {
   })
 }
 
-let timesClicked = sessionStorage.timesClicked ? Number(sessionStorage.timesClicked) : 0
+let timesClicked = localStorage.timesClicked ? Number(localStorage.timesClicked) : 0
+
+window.onload = updateCookieCount
 
 /**
  * This function adds to the click counter on the cookie.
  */
 function clickCookie() {
   timesClicked++
-  sessionStorage.timesClicked = timesClicked
+  localStorage.timesClicked = timesClicked
   // Display result
   document.getElementById('result').innerHTML = "Cookie Count: " + timesClicked
 }
 
+function updateCookieCount() {
+  document.getElementById('result').innerHTML = "Cookie Count: " + timesClicked
+}
+
 // Update the sessionStorage
-if (sessionStorage.timesClicked) {
-  sessionStorage.timesClicked = Number(sessionStorage.timesClicked) + 1
+if (localStorage.timesClicked) {
+  localStorage.timesClicked = Number(localStorage.timesClicked)
 } else {
-  sessionStorage.timesClicked = 0
+  localStorage.timesClicked = 0
 }
